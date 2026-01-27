@@ -222,7 +222,7 @@ ul {
 .hero-intro {
     font-family: 'JetBrains Mono', monospace;
     color: var(--text-secondary);
-    font-size: 1rem;
+    font-size: clamp(0.85rem, 2vw, 1rem);
     margin-bottom: 2.5rem;
     display: inline-block;
     padding: 0.5rem 1.25rem;
@@ -240,7 +240,7 @@ ul {
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+    font-size: clamp(2rem, 5vw + 0.5rem, 5.5rem);
     /* Massive, bold title with fluid sizing */
     margin-bottom: 2rem;
     letter-spacing: -0.03em;
@@ -1025,9 +1025,9 @@ footer {
 
     /* Hero Mobile */
     .hero {
-        padding-top: 8rem;
+        padding-top: 6rem;
         min-height: auto;
-        padding-bottom: 4rem;
+        padding-bottom: 3rem;
     }
 
     .hero-title {
@@ -1059,8 +1059,8 @@ footer {
     }
 
     .about-text p {
-        text-align: center;
-        /* Center text on mobile for better flow */
+        text-align: left;
+        /* Left align text on mobile for better readability */
     }
 
     .about-highlights {
@@ -1119,7 +1119,17 @@ footer {
         justify-content: flex-start;
         text-align: left;
         padding: 1rem;
-        /* Adjust padding for mobile */
+        width: 100%;
+        /* Ensure full width */
+    }
+
+    /* Override center alignment for clearer reading */
+    .contact-content {
+        text-align: left;
+    }
+
+    .contact-text {
+        text-align: left;
     }
 }
 
@@ -1130,8 +1140,11 @@ footer {
     }
 
     .hero-title {
-        /* font-size handled by clamp */
-        word-break: break-word;
+        /* font-size handled by clamp but ensure it breaks nicely */
+        word-break: normal;
+        overflow-wrap: break-word;
+        font-size: 2.2rem;
+        /* Explicit override for very small screens if clamp is too big */
     }
 
     .timeline-content {
