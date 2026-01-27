@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Trigger Hero Animations after loader clears
             setTimeout(() => {
-                const heroElements = document.querySelectorAll('.hero-title, .hero-tag, .hero-subtitle, .hero-buttons, .hero-scroll');
+                const heroElements = document.querySelectorAll('.hero-intro, .hero-title, .hero-tag, .hero-subtitle, .hero-buttons, .hero-scroll');
                 heroElements.forEach((el, index) => {
                     el.style.animation = `fadeInUp 0.8s ease-out ${index * 0.1 + 0.2}s forwards`;
                     el.style.opacity = '1'; // Ensure it stays visible
