@@ -158,11 +158,6 @@ function createProjectCards() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    createProjectCards();
-    // Other initializations...
-});
-
 // Mobile menu toggle
 const menuToggle = document.querySelector('.menu-toggle');
 const navMenu = document.querySelector('.nav-menu');
@@ -180,7 +175,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const navHeight = document.querySelector('.nav').offsetHeight;
+            const nav = document.querySelector('.nav');
+            const navHeight = nav ? nav.offsetHeight : 0;
             const targetPosition = target.offsetTop - navHeight;
             window.scrollTo({
                 top: targetPosition,
@@ -198,7 +194,6 @@ window.addEventListener('scroll', () => {
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
         if (window.pageYOffset >= sectionTop - 200) {
             current = section.getAttribute('id');
         }
@@ -227,56 +222,12 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            message: document.getElementById('message').value
-        };
-
-        // Here you would typically send the data to a server
-        // For now, we'll just log it and show a success message
-        console.log('Form submitted:', formData);
-
-        // Show success message
+        console.log('Form submitted');
         alert('Thank you for your message! I will get back to you soon.');
-
-        // Reset form
         contactForm.reset();
     });
 }
 
-// Typing effect for hero title (optional enhancement)
-const heroTitle = document.querySelector('.hero-title');
-if (heroTitle) {
-    const text = heroTitle.innerHTML;
-    heroTitle.innerHTML = '';
-    let index = 0;
-
-    function typeWriter() {
-        if (index < text.length) {
-            heroTitle.innerHTML += text.charAt(index);
-            index++;
-            setTimeout(typeWriter, 50);
-        }
-    }
-
-    // Uncomment the line below to enable typing effect
-    // setTimeout(typeWriter, 500);
-}
-
-// Cursor trail effect (optional enhancement)
-let cursorTrail = [];
-const maxTrailLength = 10;
-
-document.addEventListener('mousemove', (e) => {
-    cursorTrail.push({ x: e.clientX, y: e.clientY });
-
-    if (cursorTrail.length > maxTrailLength) {
-        cursorTrail.shift();
-    }
-});
 
 // Add dynamic background effect based on mouse position
 document.addEventListener('mousemove', (e) => {
