@@ -1,95 +1,106 @@
-// Intersection Observer for scroll animations
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -100px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
-    });
-}, observerOptions);
-
-// Observe all sections and elements that should animate on scroll
+// Preloader & Entrance Animation logic
 document.addEventListener('DOMContentLoaded', () => {
-    // Animate sections
-    const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        observer.observe(section);
-    });
+    const preloader = document.querySelector('.preloader');
 
-    // Animate project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
-        observer.observe(card);
-    });
+    // Disable scrolling during load
+    document.body.style.overflow = 'hidden';
 
-    // Animate skill categories
-    const skillCategories = document.querySelectorAll('.skill-category');
-    skillCategories.forEach((category, index) => {
-        category.style.opacity = '0';
-        category.style.transform = 'translateY(30px)';
-        category.style.transition = `opacity 0.8s ease ${index * 0.1}s, transform 0.8s ease ${index * 0.1}s`;
-        observer.observe(category);
-    });
+    // Sequence for landing
+    setTimeout(() => {
+        if (preloader) {
+            preloader.classList.add('fade-out');
+            document.body.style.overflow = 'visible';
 
-    // Animate timeline items
-    const timelineItems = document.querySelectorAll('.timeline-item');
-    timelineItems.forEach((item, index) => {
-        item.style.opacity = '0';
-        item.style.transform = 'translateY(30px)';
-        item.style.transition = `opacity 0.8s ease ${index * 0.15}s, transform 0.8s ease ${index * 0.15}s`;
-        observer.observe(item);
-    });
+            // Trigger Hero Animations after loader clears
+            setTimeout(() => {
+                const heroElements = document.querySelectorAll('.hero-title, .hero-tag, .hero-subtitle, .hero-buttons, .hero-scroll');
+                heroElements.forEach((el, index) => {
+                    el.style.animation = `fadeInUp 0.8s ease-out ${index * 0.1 + 0.2}s forwards`;
+                    el.style.opacity = '1'; // Ensure it stays visible
+                });
+            }, 300);
+        }
+    }, 2000); // 2 seconds loader
+
+    createProjectCards();
+    initScrollAnimations();
 });
 
-// Mobile menu toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const navMenu = document.querySelector('.nav-menu');
+// Advanced Scroll Animation Observer
+function initScrollAnimations() {
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
 
-menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-});
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+
+                // If it's a skill bar, trigger the width animation
+                if (entry.target.classList.contains('skill-progress')) {
+                    const progress = entry.target.getAttribute('data-progress');
+                    entry.target.style.width = progress + '%';
+                }
+
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Observe Elements
+    const revealElements = document.querySelectorAll('.section-header, .about-content, .timeline-item, .project-card, .contact-content, .skill-category');
+    revealElements.forEach(el => {
+        el.classList.add('reveal'); // Add base class via JS to ensure graceful degradation
+        observer.observe(el);
+    });
+}
+
 
 // Project Data
 const projects = [
     {
-        title: "Detective Conan News Bot",
-        description: "A production-grade Telegram bot that automatically scrapes and distributes anime news with 24/7 uptime. Features automated news collection, user notifications, and robust error handling for continuous operation.",
-        tech: ["Python", "Telegram API", "Web Scraping", "24/7 Deployment"],
+        title: "Plant Disease Detection",
+        description: "A machine learning model to detect diseases in plants from images, built with Python and computer vision libraries. Features a simple web interface for uploading images.",
+        tech: ["Python", "TensorFlow", "Computer Vision", "Flask"],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "https://github.com/johan-droid/plant-disease-detection.git"
     },
     {
         title: "Property Management Web Application",
         description: "Full-stack MERN application for comprehensive property management with user authentication, property listings, advanced search filters, and admin dashboard. Deployed on Render with PostgreSQL database.",
         tech: ["React", "Node.js", "Express", "PostgreSQL"],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "https://github.com/johan-droid/property-management-webapp-.git"
     },
     {
         title: "Resume Builder Web Application",
         description: "Interactive resume creation and management tool built with MERN stack. Features real-time preview, multiple templates, PDF export, and cloud storage integration for seamless resume building experience.",
         tech: ["MERN Stack", "MongoDB", "PDF Generation", "Vercel"],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "https://github.com/johan-droid/Resumedia-a-resume-webapp.git"
+    },
+    {
+        title: "Tester Complete Project",
+        description: "A comprehensive testing suite for web applications, including unit, integration, and end-to-end tests. Ensures code quality and application stability.",
+        tech: ["JavaScript", "Jest", "Cypress", "CI/CD"],
+        liveLink: "#",
+        githubLink: "https://github.com/johan-droid/tester-complete-project.git"
+    },
+    {
+        title: "Detective Conan News Bot",
+        description: "A production-grade Telegram bot that automatically scrapes and distributes anime news with 24/7 uptime. Features automated news collection, user notifications, and robust error handling for continuous operation.",
+        tech: ["Python", "Telegram API", "Web Scraping", "24/7 Deployment"],
+        liveLink: "#",
+        githubLink: "#" // User did not provide a link for this one
     },
     {
         title: "Web Scraping Automation Suite",
         description: "Collection of sophisticated automation tools for data collection and processing using Python. Includes news aggregation bots, data mining tools, and automated monitoring systems with Selenium and BeautifulSoup.",
         tech: ["Python", "Selenium", "BeautifulSoup", "Automation"],
         liveLink: "#",
-        githubLink: "#"
+        githubLink: "#" // User did not provide a link for this one
     }
 ];
 
@@ -97,24 +108,50 @@ function createProjectCards() {
     const projectsGrid = document.querySelector('.projects-grid');
     if (!projectsGrid) return;
 
+    // SVG Icons
+    const folderIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`;
+
+    const githubIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-github"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>`;
+
+    const externalIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-external-link"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`;
+
     projects.forEach((project, index) => {
-        const projectCard = document.createElement('article');
+        // Determine the primary link (GitHub or Live)
+        const primaryLink = (project.githubLink && project.githubLink !== '#') ? project.githubLink :
+            (project.liveLink && project.liveLink !== '#') ? project.liveLink : null;
+
+        const projectCard = document.createElement(primaryLink ? 'a' : 'div');
         projectCard.classList.add('project-card');
+
+        // If it's a link, add href and target attributes
+        if (primaryLink) {
+            projectCard.href = primaryLink;
+            projectCard.target = "_blank";
+            projectCard.rel = "noopener noreferrer";
+        }
 
         const techTags = project.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
 
+        let linksHtml = '';
+        // We still keep specific icon links for visual clarity, even though the whole card is clickable
+        if (project.githubLink && project.githubLink !== '#') {
+            linksHtml += `<div class="project-link" aria-label="GitHub Repo">${githubIcon}</div>`;
+        }
+        if (project.liveLink && project.liveLink !== '#') {
+            linksHtml += `<div class="project-link" aria-label="Live Demo">${externalIcon}</div>`;
+        }
+
         projectCard.innerHTML = `
-            <div class="project-number">${String(index + 1).padStart(2, '0')}</div>
-            <div class="project-content">
-                <h3 class="project-title">${project.title}</h3>
-                <p class="project-description">${project.description}</p>
-                <div class="project-tech">
-                    ${techTags}
-                </div>
+            <div class="project-header">
+                <div class="folder-icon">${folderIcon}</div>
                 <div class="project-links">
-                    <a href="${project.liveLink}" class="project-link">View Project →</a>
-                    <a href="${project.githubLink}" class="project-link">GitHub →</a>
+                    ${linksHtml}
                 </div>
+            </div>
+            <h3 class="project-title">${project.title}</h3>
+            <div class="project-description"><p>${project.description}</p></div>
+            <div class="project-tech">
+                ${techTags}
             </div>
         `;
         projectsGrid.appendChild(projectCard);
@@ -126,14 +163,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Other initializations...
 });
 
-// Close mobile menu when clicking on a link
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+// Mobile menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
         menuToggle.classList.toggle('active');
     });
-});
+}
 
 // Smooth scroll for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -155,7 +194,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
-    
+
     let current = '';
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
@@ -164,7 +203,7 @@ window.addEventListener('scroll', () => {
             current = section.getAttribute('id');
         }
     });
-    
+
     navLinks.forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href').slice(1) === current) {
@@ -188,21 +227,21 @@ const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
         e.preventDefault();
-        
+
         // Get form data
         const formData = {
             name: document.getElementById('name').value,
             email: document.getElementById('email').value,
             message: document.getElementById('message').value
         };
-        
+
         // Here you would typically send the data to a server
         // For now, we'll just log it and show a success message
         console.log('Form submitted:', formData);
-        
+
         // Show success message
         alert('Thank you for your message! I will get back to you soon.');
-        
+
         // Reset form
         contactForm.reset();
     });
@@ -214,7 +253,7 @@ if (heroTitle) {
     const text = heroTitle.innerHTML;
     heroTitle.innerHTML = '';
     let index = 0;
-    
+
     function typeWriter() {
         if (index < text.length) {
             heroTitle.innerHTML += text.charAt(index);
@@ -222,7 +261,7 @@ if (heroTitle) {
             setTimeout(typeWriter, 50);
         }
     }
-    
+
     // Uncomment the line below to enable typing effect
     // setTimeout(typeWriter, 500);
 }
@@ -233,7 +272,7 @@ const maxTrailLength = 10;
 
 document.addEventListener('mousemove', (e) => {
     cursorTrail.push({ x: e.clientX, y: e.clientY });
-    
+
     if (cursorTrail.length > maxTrailLength) {
         cursorTrail.shift();
     }
@@ -243,7 +282,7 @@ document.addEventListener('mousemove', (e) => {
 document.addEventListener('mousemove', (e) => {
     const x = e.clientX / window.innerWidth;
     const y = e.clientY / window.innerHeight;
-    
+
     document.documentElement.style.setProperty('--mouse-x', x);
     document.documentElement.style.setProperty('--mouse-y', y);
 });
@@ -251,7 +290,7 @@ document.addEventListener('mousemove', (e) => {
 // Skill bar animation trigger
 const animateSkillBars = () => {
     const skillBars = document.querySelectorAll('.skill-progress');
-    
+
     const skillObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -261,7 +300,7 @@ const animateSkillBars = () => {
             }
         });
     }, { threshold: 0.5 });
-    
+
     skillBars.forEach(bar => {
         bar.style.width = '0%';
         skillObserver.observe(bar);
@@ -277,7 +316,7 @@ if (logo) {
     logo.addEventListener('mouseenter', () => {
         logo.style.animation = 'glitch 0.3s ease';
     });
-    
+
     logo.addEventListener('animationend', () => {
         logo.style.animation = '';
     });
@@ -299,7 +338,7 @@ const createScrollIndicator = () => {
         transition: width 0.1s ease;
     `;
     document.body.appendChild(progressBar);
-    
+
     window.addEventListener('scroll', () => {
         const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
         const scrolled = (window.pageYOffset / windowHeight) * 100;

@@ -8,13 +8,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Sora:wght@300;400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="animations.css">
 
 </head>
 
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-content">
+            <div class="loader-logo">&lt; Ashutosh /&gt;</div>
+            <div class="loader-bar-container">
+                <div class="loader-bar"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Animated Background Grid -->
     <div class="grid-background"></div>
 
@@ -58,7 +69,6 @@
                     Full Stack Developer | Automation Expert | Problem Solver
                 </p>
                 <div class="hero-buttons">
-                    <a href="#projects" class="btn btn-primary">View Projects</a>
                     <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                 </div>
                 <div class="hero-scroll">
@@ -113,10 +123,10 @@
                 <div class="about-image">
                     <div class="image-frame">
                         <div class="image-placeholder">
-                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                                <path fill="#00ff88"
-                                    d="M44.7,-76.4C58.8,-69.2,71.8,-59.1,79.6,-45.8C87.4,-32.6,90,-16.3,88.5,-0.9C87,14.6,81.4,29.2,73.1,42.3C64.8,55.4,53.8,67,40.6,74.3C27.4,81.6,13.7,84.6,-0.5,85.4C-14.7,86.3,-29.4,85,-42.8,78.4C-56.2,71.8,-68.3,59.9,-76.2,45.7C-84.1,31.5,-87.8,15.7,-86.8,0.5C-85.8,-14.8,-80.1,-29.6,-71.5,-42.8C-62.9,-56,-51.4,-67.6,-38.1,-75.2C-24.8,-82.8,-12.4,-86.4,1.3,-88.4C15,-90.4,30.6,-83.6,44.7,-76.4Z"
-                                    transform="translate(100 100)" />
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
                             </svg>
                         </div>
                     </div>
@@ -297,21 +307,19 @@
             <div class="timeline">
 
                 <div class="timeline-item">
-                    <div class="timeline-date">December 2024</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">IoT Workshop - NIT Rourkela</h3>
+                    <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_mida2024-dronetechnology-machineintelligence-share-7252047796436942851-uxg6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
+                        target="_blank" class="timeline-content">
+                        <h3 class="timeline-title">MIDA 2024 Conference</h3>
                         <p class="timeline-description">
-                            Participated in a hands-on Internet of Things workshop at NIT Rourkela. Gained practical
-                            experience in integrating sensors, working with microcontrollers, and developing smart
-                            device solutions.
+                            Participated in MIDA 2024 (Machine Intelligence &amp; Drone Applications), exploring
+                            cutting-edge advancements in drone technology, AI integration, and autonomous systems.
                         </p>
                         <div class="timeline-tags">
-                            <span class="tag">IoT</span>
-                            <span class="tag">Sensors</span>
-                            <span class="tag">Smart Devices</span>
+                            <span class="tag">Drones</span>
+                            <span class="tag">Machine Intelligence</span>
+                            <span class="tag">AI</span>
                         </div>
-                        <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_iot-internetofthings-nitrourkela-activity-7345515587810299904-wC1b?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
-                            target="_blank" class="timeline-link">
+                        <div class="timeline-link">
                             View Post
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -319,65 +327,13 @@
                                     d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
                                 </path>
                             </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">December 2024</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Computer Networking Workshop - NIT Rourkela</h3>
-                        <p class="timeline-description">
-                            Attended a comprehensive workshop focusing on computer networking fundamentals, network
-                            architecture, and modern communication protocols at NIT Rourkela.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">Networking</span>
-                            <span class="tag">Protocols</span>
-                            <span class="tag">Architecture</span>
                         </div>
-                        <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_nitrourkela-computernetworking-professionaldevelopment-share-7345513888852975617-Hw0F?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
-                            target="_blank" class="timeline-link">
-                            View Post
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-date">August 2024</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">Web Development Training</h3>
-                        <p class="timeline-description">
-                            Completed an intensive web development training program covering HTML5, CSS3, JavaScript,
-                            and responsive design principles, culminating in hands-on project implementations.
-                        </p>
-                        <div class="timeline-tags">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_webdevelopment-html-css-share-7252050063701495810-HAUo?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
-                            target="_blank" class="timeline-link">
-                            View Post
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
-                                </path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-date">July 2024</div>
-                    <div class="timeline-content">
+                    <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_vocationaltraining-nalco-professionaldevelopment-share-7252048553307430913-ymta?utm_source=share&utm_medium=member_desktop&rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
+                        target="_blank" class="timeline-content">
                         <h3 class="timeline-title">Vocational Training - NALCO</h3>
                         <p class="timeline-description">
                             Completed industrial vocational training at National Aluminium Company Limited (NALCO).
@@ -389,8 +345,7 @@
                             <span class="tag">NALCO</span>
                             <span class="tag">Core Engineering</span>
                         </div>
-                        <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_vocationaltraining-nalco-professionaldevelopment-share-7252048553307430913-ymta?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
-                            target="_blank" class="timeline-link">
+                        <div class="timeline-link">
                             View Post
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -398,25 +353,24 @@
                                     d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
                                 </path>
                             </svg>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="timeline-item">
-                    <div class="timeline-date">July 2024</div>
-                    <div class="timeline-content">
-                        <h3 class="timeline-title">MIDA 2024 Conference</h3>
+                    <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_webdevelopment-html-css-share-7252050063701495810-HAUo?utm_source=share&utm_medium=member_desktop&rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
+                        target="_blank" class="timeline-content">
+                        <h3 class="timeline-title">Web Development Training</h3>
                         <p class="timeline-description">
-                            Participated in MIDA 2024 (Machine Intelligence &amp; Drone Applications), exploring
-                            cutting-edge advancements in drone technology, AI integration, and autonomous systems.
+                            Completed an intensive web development training program covering HTML5, CSS3, JavaScript,
+                            and responsive design principles, culminating in hands-on project implementations.
                         </p>
                         <div class="timeline-tags">
-                            <span class="tag">Drones</span>
-                            <span class="tag">Machine Intelligence</span>
-                            <span class="tag">AI</span>
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">JavaScript</span>
                         </div>
-                        <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_mida2024-dronetechnology-machineintelligence-share-7252047796436942851-uxg6?utm_source=share&amp;utm_medium=member_desktop&amp;rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
-                            target="_blank" class="timeline-link">
+                        <div class="timeline-link">
                             View Post
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke="currentColor">
@@ -424,8 +378,59 @@
                                     d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
                                 </path>
                             </svg>
-                        </a>
-                    </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="timeline-item">
+                    <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_iot-internetofthings-nitrourkela-activity-7345515587810299904-wC1b?utm_source=share&utm_medium=member_desktop&rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
+                        target="_blank" class="timeline-content">
+                        <h3 class="timeline-title">IoT Workshop - NIT Rourkela</h3>
+                        <p class="timeline-description">
+                            Participated in a hands-on Internet of Things workshop at NIT Rourkela. Gained practical
+                            experience in integrating sensors, working with microcontrollers, and developing smart
+                            device solutions.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">IoT</span>
+                            <span class="tag">Sensors</span>
+                            <span class="tag">Smart Devices</span>
+                        </div>
+                        <div class="timeline-link">
+                            View Post
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="timeline-item">
+                    <a href="https://www.linkedin.com/posts/ashutosh-sahoo-064064280_nitrourkela-computernetworking-professionaldevelopment-share-7345513888852975617-Hw0F?utm_source=share&utm_medium=member_desktop&rcm=ACoAAERaAUwBRintqnLQJXocpWQpbSbkGBE7M5E"
+                        target="_blank" class="timeline-content">
+                        <h3 class="timeline-title">Computer Networking Workshop - NIT Rourkela</h3>
+                        <p class="timeline-description">
+                            Attended a comprehensive workshop focusing on computer networking fundamentals, network
+                            architecture, and modern communication protocols at NIT Rourkela.
+                        </p>
+                        <div class="timeline-tags">
+                            <span class="tag">Networking</span>
+                            <span class="tag">Protocols</span>
+                            <span class="tag">Architecture</span>
+                        </div>
+                        <div class="timeline-link">
+                            View Post
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
                 </div>
 
             </div>
@@ -491,21 +496,6 @@
                         </div>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
             </div>
         </div>
     </section>
@@ -540,7 +530,7 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=2"></script>
 </body>
 
 </html>
