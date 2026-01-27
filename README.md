@@ -87,10 +87,13 @@ Update Telegram username in footer (line ~447 in updated version)
 2. Drag and drop your folder
 3. Instant deployment with custom domain support
 
-### Option 3: Vercel (Free)
-1. Sign up at vercel.com
-2. Import your GitHub repository
-3. Automatic deployment
+### Option 3: Vercel (Recommended)
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fjohan-droid%2FAshutosh_Portfolio)
+
+1. Click the button above to clone and deploy
+2. Connect your GitHub account
+3. Enjoy your live site!
 
 ## 🎨 Color Customization
 
