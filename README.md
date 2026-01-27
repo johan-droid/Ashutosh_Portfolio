@@ -69,7 +69,7 @@ contactForm.addEventListener('submit', async (e) => {
 
 Your current links:
 - LinkedIn: https://in.linkedin.com/in/ashutosh-sahoo-064064280
-- GitHub: https://github.com/ashutoshsahoo
+- GitHub: https://github.com/johan-droid
 
 Update Telegram username in footer (line ~447 in updated version)
 
