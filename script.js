@@ -182,6 +182,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 top: targetPosition,
                 behavior: 'smooth'
             });
+
+            // Close mobile menu if open
+            if (navMenu && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                if (menuToggle) menuToggle.classList.remove('active');
+            }
         }
     });
 });
@@ -300,12 +306,6 @@ const createScrollIndicator = () => {
 createScrollIndicator();
 
 // Add loading animation
-window.addEventListener('load', () => {
-    document.body.style.opacity = '0';
-    setTimeout(() => {
-        document.body.style.transition = 'opacity 0.5s ease';
-        document.body.style.opacity = '1';
-    }, 100);
-});
+// Loading animation handled by preloader logic at the top
 
 console.log('Portfolio website loaded successfully! 🚀');

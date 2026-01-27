@@ -72,6 +72,8 @@ h6 {
     line-height: 1.2;
     font-weight: 700;
     letter-spacing: -0.02em;
+    /* Basic fluid typography fallback */
+    word-wrap: break-word;
 }
 
 a {
@@ -238,8 +240,8 @@ ul {
 }
 
 .hero-title {
-    font-size: 5.5rem;
-    /* Massive, bold title */
+    font-size: clamp(2.5rem, 5vw + 1rem, 5.5rem);
+    /* Massive, bold title with fluid sizing */
     margin-bottom: 2rem;
     letter-spacing: -0.03em;
     line-height: 1.1;
@@ -251,7 +253,7 @@ ul {
 }
 
 .hero-subtitle {
-    font-size: 1.5rem;
+    font-size: clamp(1rem, 2vw + 0.5rem, 1.5rem);
     color: var(--text-secondary);
     margin: 0 auto 3.5rem;
     max-width: 700px;
@@ -401,7 +403,7 @@ section {
 }
 
 .section-title {
-    font-size: 3.5rem;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
     letter-spacing: -0.04em;
     background: linear-gradient(180deg, #fff 0%, #cbd5e1 100%);
     -webkit-background-clip: text;
@@ -429,7 +431,7 @@ section {
 .about-text p {
     color: var(--text-secondary);
     margin-bottom: 2rem;
-    font-size: 1.125rem;
+    font-size: clamp(1rem, 1.5vw + 0.5rem, 1.125rem);
     text-align: left;
     line-height: 1.8;
 }
@@ -460,7 +462,7 @@ section {
 
 .highlight-number {
     display: block;
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 4vw + 1rem, 3.5rem);
     font-weight: 800;
     background: var(--gradient-accent);
     -webkit-background-clip: text;
@@ -1029,7 +1031,7 @@ footer {
     }
 
     .hero-title {
-        font-size: 3rem;
+        /* font-size handled by clamp */
         margin-bottom: 1rem;
     }
 
@@ -1116,25 +1118,24 @@ footer {
     .contact-item {
         justify-content: flex-start;
         text-align: left;
+        padding: 1rem;
+        /* Adjust padding for mobile */
     }
 }
 
 @media (max-width: 480px) {
     .container {
-        padding: 0 1.25rem;
+        padding: 0 1rem;
+        /* Slightly tighter padding on very small screens */
     }
 
     .hero-title {
-        font-size: 2.5rem;
+        /* font-size handled by clamp */
         word-break: break-word;
     }
 
-    .section-title {
-        font-size: 2.25rem;
-    }
-
-    .highlight-number {
-        font-size: 2.5rem;
+    .timeline-content {
+        padding: 1.25rem;
     }
 }
 
