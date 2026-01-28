@@ -99,7 +99,7 @@ function cacheDOMElements() {
     DOM.navMenu = document.getElementById('navMenu');
     DOM.navLinks = document.querySelectorAll('.nav-link');
     DOM.sections = document.querySelectorAll('section');
-    DOM.projectsGrid = document.getElementById('projectsGrid');
+    DOM.projectsGrid = document.querySelector('.projects-grid');
     DOM.hero = document.querySelector('.hero-content');
     DOM.nav = document.getElementById('mainNav');
 }
