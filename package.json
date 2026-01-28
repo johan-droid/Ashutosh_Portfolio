@@ -1,12 +1,13 @@
 {
   "name": "ashutosh-portfolio",
-  "version": "1.0.0",
-  "description": "Professional Portfolio Website",
+  "version": "2.0.0",
+  "description": "Professional Portfolio Website - Optimized",
   "author": "Ashutosh Sahoo",
   "license": "MIT",
   "keywords": [
     "portfolio",
     "web",
-    "developer"
+    "developer",
+    "optimized"
   ]
 }

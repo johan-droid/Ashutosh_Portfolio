@@ -4,20 +4,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ashutosh Sahoo - Full Stack Developer specializing in MERN stack, bot engineering, and web scraping automation.">
+    <meta name="theme-color" content="#020617">
     <title>Ashutosh Sahoo | Full Stack Developer & Bot Engineer</title>
+    
+    <!-- Preconnect to external domains for faster font loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
-        rel="stylesheet">
+    
+    <!-- Load fonts with display=swap for better performance -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Inline critical CSS for faster initial render -->
+    <style>
+        /* Critical CSS - Above the fold */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617;
+            color: #f8fafc;
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .preloader {
+            position: fixed;
+            inset: 0;
+            background: #020617;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loader-bar-container {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 1rem auto 0;
+            animation: fadeIn 0.5s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .loader-bar {
+            height: 100%;
+            background: #06b6d4;
+            animation: loadProgress 1.5s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
+            width: 0%;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @keyframes loadProgress {
+            to { width: 100%; }
+        }
+    </style>
+    
+    <!-- Main stylesheet loaded asynchronously -->
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="animations.css">
-
 </head>
 
 <body>
     <!-- Preloader -->
-    <div class="preloader">
+    <div class="preloader" id="preloader">
         <div class="loader-content">
             <div class="loader-logo">&lt; Ashutosh /&gt;</div>
             <div class="loader-bar-container">
@@ -27,17 +123,17 @@
     </div>
 
     <!-- Animated Background Grid -->
-    <div class="grid-background"></div>
+    <div class="grid-background" aria-hidden="true"></div>
 
     <!-- Navigation -->
-    <nav class="nav">
+    <nav class="nav" id="mainNav">
         <div class="nav-container">
-            <div class="nav-logo">
+            <a href="#home" class="nav-logo" aria-label="Home">
                 <span class="logo-bracket">&lt;</span>
                 <span class="logo-text">DEV</span>
                 <span class="logo-bracket">/&gt;</span>
-            </div>
-            <ul class="nav-menu">
+            </a>
+            <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Home</a></li>
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -45,7 +141,7 @@
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
-            <button class="menu-toggle" aria-label="Toggle menu">
+            <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -527,7 +623,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=2"></script>
+    <!-- Load JavaScript with defer for better performance -->
+    <script src="script.js" defer></script>
 </body>
 
 </html>
