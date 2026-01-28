@@ -14,7 +14,7 @@ const debounce = (func, wait) => {
 // Throttle utility for scroll events
 const throttle = (func, limit) => {
     let inThrottle;
-    return function(...args) {
+    return function (...args) {
         if (!inThrottle) {
             func.apply(this, args);
             inThrottle = true;
@@ -30,34 +30,34 @@ const projects = [
         description: "A machine learning model to detect diseases in plants from images, built with Python and computer vision libraries. Features a simple web interface for uploading images.",
         tech: ["Python", "TensorFlow", "Computer Vision", "Flask"],
         liveLink: "#",
-        githubLink: "https://github.com/johan-droid/plant-disease-detection.git"
+        githubLink: "https://github.com/johan-droid/plant-disease-detection"
     },
     {
         title: "Property Management Web Application",
         description: "Full-stack MERN application for comprehensive property management with user authentication, property listings, advanced search filters, and admin dashboard.",
         tech: ["React", "Node.js", "Express", "PostgreSQL"],
         liveLink: "#",
-        githubLink: "https://github.com/johan-droid/property-management-webapp-.git"
+        githubLink: "https://github.com/johan-droid/property-management-webapp-"
     },
     {
         title: "Resume Builder Web Application",
         description: "Interactive resume creation and management tool built with MERN stack. Features real-time preview, multiple templates, PDF export, and cloud storage integration.",
         tech: ["MERN Stack", "MongoDB", "PDF Generation", "Vercel"],
         liveLink: "#",
-        githubLink: "https://github.com/johan-droid/Resumedia-a-resume-webapp.git"
+        githubLink: "https://github.com/johan-droid/Resumedia-a-resume-webapp"
     },
     {
         title: "Tester Complete Project",
         description: "A comprehensive testing suite for web applications, including unit, integration, and end-to-end tests. Ensures code quality and application stability.",
         tech: ["JavaScript", "Jest", "Cypress", "CI/CD"],
         liveLink: "#",
-        githubLink: "https://github.com/johan-droid/tester-complete-project.git"
+        githubLink: "https://github.com/johan-droid/tester-complete-project"
     },
     {
         title: "Detective Conan News Bot",
         description: "A production-grade Telegram bot that automatically scrapes and distributes anime news with 24/7 uptime. Features automated news collection and robust error handling.",
         tech: ["Python", "Telegram API", "Web Scraping", "24/7 Deployment"],
-        liveLink: "#",
+        liveLink: "https://detective-conan-web.onrender.com",
         githubLink: "#"
     },
     {
@@ -73,7 +73,7 @@ const projects = [
 const icons = {
     folder: `<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`,
     github: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>`,
-    external: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>` 
+    external: `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`
 };
 
 // State management
@@ -134,26 +134,36 @@ function createProjectCards() {
     const fragment = document.createDocumentFragment();
 
     projects.forEach(project => {
-        const primaryLink = (project.githubLink && project.githubLink !== '#') ? project.githubLink :
-            (project.liveLink && project.liveLink !== '#') ? project.liveLink : null;
+        // Prioritize Live Link for the main card click, fallback to GitHub
+        const primaryLink = (project.liveLink && project.liveLink !== '#') ? project.liveLink :
+            (project.githubLink && project.githubLink !== '#') ? project.githubLink : null;
 
-        const projectCard = document.createElement(primaryLink ? 'a' : 'div');
+        const projectCard = document.createElement('div');
         projectCard.classList.add('project-card');
 
         if (primaryLink) {
-            projectCard.href = primaryLink;
-            projectCard.target = "_blank";
-            projectCard.rel = "noopener noreferrer";
+            projectCard.classList.add('clickable');
+            projectCard.addEventListener('click', () => {
+                window.open(primaryLink, '_blank');
+            });
+            projectCard.setAttribute('role', 'link');
+            projectCard.setAttribute('tabindex', '0');
+            projectCard.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    window.open(primaryLink, '_blank');
+                }
+            });
         }
 
         const techTags = project.tech.map(tag => `<span class="tech-tag">${tag}</span>`).join('');
 
         let linksHtml = '';
         if (project.githubLink && project.githubLink !== '#') {
-            linksHtml += `<div class="project-link" aria-label="GitHub Repo">${icons.github}</div>`;
+            linksHtml += `<a href="${project.githubLink}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="GitHub Repo" onclick="event.stopPropagation()">${icons.github}</a>`;
         }
         if (project.liveLink && project.liveLink !== '#') {
-            linksHtml += `<div class="project-link" aria-label="Live Demo">${icons.external}</div>`;
+            linksHtml += `<a href="${project.liveLink}" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Live Demo" onclick="event.stopPropagation()">${icons.external}</a>`;
         }
 
         projectCard.innerHTML = `
@@ -169,7 +179,7 @@ function createProjectCards() {
                 ${techTags}
             </div>
         `;
-        
+
         fragment.appendChild(projectCard);
     });
 
@@ -223,7 +233,7 @@ function initMobileMenu() {
         const isActive = DOM.navMenu.classList.toggle('active');
         DOM.menuToggle.classList.toggle('active');
         DOM.menuToggle.setAttribute('aria-expanded', isActive);
-        
+
         // Prevent body scroll when menu is open on mobile
         if (isActive) {
             document.body.style.overflow = 'hidden';
@@ -234,8 +244,8 @@ function initMobileMenu() {
 
     // Close menu when clicking outside
     document.addEventListener('click', (e) => {
-        if (DOM.navMenu.classList.contains('active') && 
-            !DOM.navMenu.contains(e.target) && 
+        if (DOM.navMenu.classList.contains('active') &&
+            !DOM.navMenu.contains(e.target) &&
             !DOM.menuToggle.contains(e.target)) {
             DOM.navMenu.classList.remove('active');
             DOM.menuToggle.classList.remove('active');
@@ -251,14 +261,14 @@ function initSmoothScroll() {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
-            
+
             if (targetId === '#') return;
-            
+
             const target = document.querySelector(targetId);
             if (target) {
                 const navHeight = DOM.nav ? DOM.nav.offsetHeight : 0;
                 const targetPosition = target.offsetTop - navHeight;
-                
+
                 window.scrollTo({
                     top: targetPosition,
                     behavior: 'smooth'
@@ -303,11 +313,11 @@ const updateActiveNavLink = throttle(() => {
 let ticking = false;
 function updateParallax() {
     if (!DOM.hero) return;
-    
+
     const scrolled = window.pageYOffset;
     DOM.hero.style.transform = `translateY(${scrolled * 0.3}px)`;
     DOM.hero.style.opacity = Math.max(0, 1 - (scrolled / 600));
-    
+
     ticking = false;
 }
 
@@ -358,10 +368,10 @@ function init() {
     initMobileMenu();
     initSmoothScroll();
     createScrollIndicator();
-    
+
     // Add scroll listener with passive flag for better performance
     window.addEventListener('scroll', handleScroll, { passive: true });
-    
+
     console.log('Portfolio website loaded successfully! 🚀');
 }
 

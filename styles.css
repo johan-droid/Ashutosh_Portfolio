@@ -53,7 +53,12 @@ body {
 }
 
 /* Typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     font-family: 'Outfit', sans-serif;
     color: var(--text-primary);
     line-height: 1.2;
@@ -93,7 +98,7 @@ img {
     height: 100vh;
     z-index: -1;
     background: radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
+        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.08) 0%, transparent 40%);
     pointer-events: none;
     will-change: transform;
 }
@@ -104,7 +109,7 @@ img {
     inset: 0;
     background-size: 50px 50px;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                      linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     mask-image: radial-gradient(circle at center, black 40%, transparent 100%);
 }
 
@@ -131,8 +136,8 @@ img {
     align-items: center;
     gap: 4rem;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-                0 2px 4px -1px rgba(0, 0, 0, 0.06),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .nav-logo {
@@ -702,6 +707,13 @@ section {
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     height: 100%;
     backdrop-filter: blur(12px);
+}
+
+.project-card.clickable:hover {
+    cursor: pointer;
+    transform: translateY(-8px);
+    border-color: var(--accent-primary);
+    box-shadow: 0 20px 40px -15px rgba(6, 182, 212, 0.15);
 }
 
 .project-card:hover {
